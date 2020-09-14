@@ -11,7 +11,7 @@ class Destination(db.Model):
     month = db.Column(db.String(64))
     year = db.Column(db.Integer)
     country = db.Column(db.String(64))
-    visited = db.Column(db.Boolean)
+    visited = db.Column(db.Integer)
 
     # Return string of 'month date, year'
     def get_date(self):
