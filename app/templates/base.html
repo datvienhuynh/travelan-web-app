@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link 
+      href="https://fonts.googleapis.com/css?family=Mukta+Mahee:200,300,400|Abril+Fatface:400,700" 
+      rel="stylesheet"
+    />
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="/static/bootstrap.css">
+    <link rel="stylesheet" href="/static/animate.css">
+    <link rel="stylesheet" href="/static/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/aos.css">
+    <link rel="stylesheet" href="/static/fancybox.min.css">
+    <link rel="stylesheet" href="/static/animsition.min.css">
+    <link rel="stylesheet" href="/static/fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/static/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+
+
+  <body>
+    <!-- Fade animation -->
+    <div 
+      class="js-animsition animsition" 
+      id="site-wrap" 
+      data-animsition-in-class="fade-in" 
+      data-animsition-out-class="fade-out"
+    >
+
+    <!-- Logo & Menu Header -->
+    <header class="site-header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-4 site-logo" data-aos="fade">
+            <a href="/" class="animsition-link">Travelan</a>
+          </div>
+          <div class="col-8">
+
+            <!-- Menu Toogle Icon -->
+            <div class="site-menu-toggle js-site-menu-toggle"  data-aos="fade">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <!-- End Menu -->
+
+            <!-- Navigation Drop Menu -->
+            <div class="site-navbar js-site-navbar">
+              <nav role="navigation">
+                <div class="container">
+                  <div class="row full-height align-items-center">
+                    <div class="col-md-12 justify-content-center">
+                      <ul class="list-unstyled menu">
+                        <li class="active"><a href="/" class="animsition-link">Home</a></li>
+                        <li><a href="/destination" class="animsition-link">Destinations</a></li>
+                        <li><a href="/plan" class="animsition-link">Plan</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- Heading & Background Image Section -->
+    <section class="site-hero overlay" style="background-image: url(/static/images/{{background_image}})">
+      <div class="container">
+        <div class="row site-hero-inner justify-content-center align-items-center">
+          <div class="col-md-10 text-center">
+            <h1 class="heading mb-4" data-aos="fade-up">{{heading}}</h1>
+            <p class="sub-heading mb-5" data-aos="fade-up" data-aos-delay="100">
+              <a>
+                {{description}}
+              </a>
+            </p>
+            <!-- Buttons for different pages -->
+            <p class="pt-4" data-aos="fade-up" data-aos-delay="100">
+              {% if main_button_name == 'Add Destination' %}
+                <a 
+                  href={{main_button}} 
+                  target="_blank" 
+                  class="btn uppercase btn-outline-light d-sm-inline d-block py-3"
+                  data-toggle="modal"
+                  data-target="#newItemModal"
+                >
+                  {{main_button_name}}
+                </a>
+              {% elif main_button_name == 'Edit Destination' %}
+                <a 
+                  href={{main_button}} 
+                  target="_blank" 
+                  class="btn uppercase btn-outline-light d-sm-inline d-block py-3"
+                  data-toggle="modal"
+                  data-target="#editItemModal"
+                >
+                  {{main_button_name}}
+                </a>
+              {% elif main_button_name == 'Upload Photo' %}
+                <div style="display: none">
+                    <input type="file" id="upload-file" name="file" accept=".jpg,.jpeg,.png,.gif">
+                    <input type="submit" id="submit-button" value="Upload">
+                </div>
+                <input 
+                  type="button" 
+                  id="upload-button" 
+                  class="btn uppercase btn-outline-light d-sm-inline d-block py-3" 
+                  value="Upload Photo"
+                >
+              {% else %}
+                <a 
+                  href={{main_button}} 
+                  target="_blank" 
+                  class="btn uppercase btn-outline-light d-sm-inline d-block py-3"
+                >
+                  {{main_button_name}}
+                </a>
+              {% endif %}
+            </p>
+          </div>
+        </div>
+        <p data-aos="fade-up" data-aos-offset="-500">
+          <a href="#next-section" class="scroll-down smoothscroll"> 
+            <span class="fa fa-play"></span> 
+            Scroll Down 
+          </a>
+        </p>
+      </div>
+    </section>
+    <!-- END section -->
+
+    <!-- Body Block -->
+    <div class="container" id="next-section">
+        {% block body %}
+
+        {% endblock %}
+    </div>
+    <!-- End Body -->
+    
+    <!-- Footer -->
+    <footer class="section footer-section">
+      <div class="container">
+        <div class="row mb-2 justify-content-center">
+          <div class="col-md-3 mb-5">
+            <h3>Link</h3>
+            <ul class="list-unstyled link">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Terms &amp; Conditions</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-5 pr-md-5 contact-info">
+            <h3>Contact</h3>
+            <p><span class="d-block">Address:</span> <span> Kensington NSW 2052 </span></p>
+            <p><span class="d-block">Phone:</span> <span> (+61) 0111 222 333 </span></p>
+            <p><span class="d-block">Email:</span> <span> info@travelan.com</span></p>
+          </div>
+        </div>
+        <div class="row bordertop text-center pt-5">
+          <p class="col-md-12 social">
+            <a href="#"><span class="fa fa-facebook"></span></a>
+            <a href="#"><span class="fa fa-twitter"></span></a>
+            <a href="#"><span class="fa fa-instagram"></span></a>
+            <a href="#"><span class="fa fa-linkedin"></span></a>
+            <a href="#"><span class="fa fa-youtube"></span></a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+    </div>
+    <!-- End Fade Animation -->
+
+    <!-- Javascript Bootstrap Support -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+      crossorigin="anonymous">
+    </script>
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/jquery.fancybox.min.js"></script>
+    <script src="/static/js/animsition.min.js"></script>
+    <script src="/static/js/aos.js"></script>
+    <script src="/static/js/main.js"></script>
+
+    <!-- Javascript for deleting items -->
+    <script>
+      var deleteId = 0;
+      function setDeleteId(event) {
+        deleteId = event.dataset.itemId;
+      }
+      function deleteDest(id) {
+        console.log(deleteId);
+        fetch("/plan/" + id, {
+          method: "DELETE",
+        })
+          .then(() => window.location.reload())
+          .catch((error) => console.log("Something went wrong: " + error));
+      }
+    </script>
+
+    <!-- Javascript for uploading photos -->
+    <script type="text/javascript">
+      $(function() {
+          $("#upload-button").click(function() {
+              $("#upload-file").click();
+          });
+
+          $("#upload-file").change(function() {
+              $("#submit-button").click();
+          });
+      });
+    </script>
+  </body>
+</html>

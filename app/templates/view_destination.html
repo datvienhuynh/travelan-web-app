@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+<!-- Extend Body -->
+{% block body %}
+  <!-- Caption -->
+  <div class="row justify-content-center text-center mb-5" id='next-section'>
+    <div class="col-md-8">
+      <p></p>
+      <p class="lead" data-aos="fade-up" data-aos-delay="100">
+        {{destination.caption}}
+      </p>
+    </div>
+  </div>
+
+  <!-- Display all images of the destination -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4">
+          {% for image_name in destination.image_names.split() %}
+            <a 
+              href="/static/images/{{image_name}}" 
+              data-fancybox="gallery"><img src="/static/images/{{image_name}}" 
+              alt="Image" 
+              class="img-fluid"
+            >
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include "modals.html" %}
+  {% include "editModal.html" %}
+{% endblock %}
+<!-- End Extend Body -->

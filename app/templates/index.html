@@ -1,0 +1,66 @@
+{% extends "base.html" %} 
+
+<!-- Extend Body -->
+{% block body %}
+  <!-- Preview Section -->
+  <section class="section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4" data-aos="fade-up">
+          <p><img src="/static/images/vertical_1.jpg" alt="Image" class="img-fluid"></p>
+        </div>
+        <div class="col-lg-6 pl-lg-5" data-aos="fade-up">
+          <h2 class="mb-4">Hi Dat,</h2>
+          <p>By far, you have been to {{no_countries}} countries and {{no_destinations}} destinations. 
+              What a great journey!
+          </p>
+          {% if next_destination != None %}
+            <p>Your next trip will be {{next_destination.name}} in {{next_destination.country}} on 
+                {{next_destination.month}} {{next_destination.date}}, {{next_destination.year}}.
+            </p>
+          {% else %}
+            <p>There is no plan for the next trip yet.</p>
+          {% endif %}
+          <p class="pt-4">
+            <a href="/destination/{{next_destination.id}}" class="btn-play d-flex">
+              <span class="text align-self-center">More Details</span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Preview -->
+
+  <!-- Recent Destionation Section -->
+  <section class="section bg-light-2">
+    <div class="container">
+      <div class="row justify-content-center text-center mb-5">
+        <div class="col-md-8 primary-bg-text">
+          <h2 class="heading" data-aos="fade-up">Recent Destinations</h2>
+        </div>
+      </div>
+
+      <!-- 3 most recent destinations in the list -->
+      <div class="row">
+        {% for destination in recent_destinations %}
+          <div class="col-lg-4 col-md-6 col-sm-6 col-12 post" data-aos="fade-up" data-aos-delay="100">
+            <div class="media media-custom d-block mb-4">
+              <a href="/destination/{{destination.id}}" class="mb-4 d-block">
+                <img src="/static/images/{{destination.image_names.split()[0]}}" alt="Image placeholder" class="img-fluid">
+              </a>
+              <div class="media-body">
+                <span class="meta-post">{{destination.month}} {{destination.date}}, {{destination.year}}</span>
+                <h2 class="mt-0 mb-3"><a href="/destination/{{destination.id}}">{{destination.name}}</a></h2>
+                <p>{{destination.caption}}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- End Recent Destination -->
+  {% include "modals.html" %}
+{% endblock %}
+<!-- End Extend Body -->

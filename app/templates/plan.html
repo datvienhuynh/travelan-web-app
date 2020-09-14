@@ -1,0 +1,44 @@
+{% extends "base.html" %} 
+<!-- Extend Body -->
+{% block body %}
+  <p></p>
+  <!-- Table of destination details -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Time</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Country</th>
+        <th scope="col">Caption</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for destination in destinations %}
+        <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{destination.month}} {{destination.date}}, {{destination.year}}</td>
+            <td><a href="/destination/{{destination.id}}">{{destination.name}}</a></td>
+            <td>{{destination.country}}</td>
+            <td>{{destination.caption}}</td>
+            <td>
+              <!-- Delete Button -->
+              <button
+                  type="button"
+                  data-item-id="{{destination.id}}"
+                  data-toggle="modal"
+                  data-target="#deleteModal"
+                  class="btn btn-danger"
+                  onclick="{setDeleteId(this)}"
+              >Delete</button>
+            </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% include "modals.html" %} 
+{% endblock %}
+<!-- End Extend Body -->

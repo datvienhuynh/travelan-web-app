@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+<!-- Extend Body -->
+{% block body %}
+  <!-- Display all destination posts -->
+  <section class="section bg-light-2">
+    <div class="container">
+      <div class="row">
+        {% for destination in destinations %}
+          <div class="col-lg-4 col-md-6 col-sm-6 col-12 post" data-aos="fade-up" data-aos-delay="100">
+            <div class="media media-custom d-block mb-4">
+              <a href="/destination/{{destination.id}}" class="mb-4 d-block">
+                <img src="/static/images/{{destination.image_names.split()[0]}}" alt="Image placeholder" class="img-fluid">
+              </a>
+              <div class="media-body">
+                <span class="meta-post">{{destination.month}} {{destination.date}}, {{destination.year}}</span>
+                <h2 class="mt-0 mb-3"><a href="/destination/{{destination.id}}">{{destination.name}}</a></h2>
+                <p>{{destination.caption}}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% include "modals.html" %}
+{% endblock %}
+<!-- End Extend Body -->

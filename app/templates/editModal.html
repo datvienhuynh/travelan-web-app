@@ -1,0 +1,88 @@
+<!-- Modal for editing a destination -->
+<div
+  class="modal fade"
+  id="editItemModal"
+  data-backdrop="static"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editItemModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editItemModalLabel">Edit Destination</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/plan/{{destination.id}}" method="post">
+          <input name="id" type="text" class="form-control d-none" id="inputId" value="{{destination.id}}">
+          <div class="form-group">
+            <label for="inputName">Name</label>
+            <textarea
+              name="name"
+              type="text"
+              class="form-control"
+              id="inputName"
+              rows="1"
+            >{{destination.name}}</textarea>
+          </div>
+          <div class="form-group">
+            <label for="inputCountry">Country</label>
+            <input
+              name="country"
+              type="text"
+              class="form-control"
+              id="inputCountry"
+              value={{destination.country}}
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputDate">Date</label>
+            <input
+              name="date"
+              type="integer"
+              class="form-control"
+              id="inputDate"
+              value={{destination.date}}
+            />
+            <label for="inputMonth">Month</label>
+            <input
+              name="month"
+              type="text"
+              class="form-control"
+              id="inputMonth"
+              value={{destination.month}}
+            />
+            <label for="inputYear">Year</label>
+            <input
+              name="year"
+              type="integer"
+              class="form-control"
+              id="inputYear"
+              value={{destination.year}}
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputCaption">Caption</label>
+            <textarea
+              name="caption"
+              type="text"
+              class="form-control"
+              id="caption"
+              rows="4"
+            >{{destination.caption}}</textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
