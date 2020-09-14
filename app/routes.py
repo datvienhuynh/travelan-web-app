@@ -17,14 +17,14 @@ def count_countries(destinations):
 def get_future(destinations):
     future = []
     for destination in destinations:
-        if destination.visited == 0:
+        if destination.visited == False:
             future.append(destination)
     return future
 
 # Get the first of the future destinations
 def get_next_destination(destinations):
     for destination in destinations:
-        if destination.visited == 0:
+        if destination.visited == False:
             return destination
     return None
 
